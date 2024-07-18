@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fontsource-variable/noto-sans';
+	import '@fontsource/poppins';
 	import '../app.css';
 </script>
 
