@@ -1,6 +1,14 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
-	import Input from 'postcss/lib/input';
+	import Input from '$lib/components/ui/input/input.svelte';
+	import { loginSchema } from '$lib/schema';
+	import { superForm } from 'sveltekit-superforms';
+	import { zodClient } from 'sveltekit-superforms/adapters';
+
+	export let data;
+	const form = superForm(data.form, { validators: zodClient(loginSchema) });
+
+	const { form: formData, enhance, delayed } = form;
 </script>
 
 <div>
@@ -11,6 +19,14 @@
 			<Form.Control let:attrs>
 				<Form.Label>Email</Form.Label>
 				<Input {...attrs} bind:value={$formData.email} />
+			</Form.Control>
+			<Form.Description />
+			<Form.FieldErrors />
+		</Form.Field>
+		<Form.Field {form} name="password">
+			<Form.Control let:attrs>
+				<Form.Label>Password</Form.Label>
+				<Input type="password" {...attrs} bind:value={$formData.password} />
 			</Form.Control>
 			<Form.Description />
 			<Form.FieldErrors />
