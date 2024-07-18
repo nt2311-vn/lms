@@ -55,7 +55,7 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Noto Sans Variable', ...fontFamily.sans]
+				sans: ['Poppins', ...fontFamily.sans]
 			}
 		}
 	}
