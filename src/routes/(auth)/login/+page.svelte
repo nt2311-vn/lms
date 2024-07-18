@@ -32,7 +32,7 @@
 			<Form.Description />
 			<Form.FieldErrors />
 		</Form.Field>
-		<Form.Button class="w-full">
+		<Form.Button class="w-full font-semibold">
 			{#if $delayed}
 				<Loader2 class="size-6 animate-spin" />
 			{:else}
@@ -44,6 +44,8 @@
 			<div class="mx-4 text-gray-700">OR</div>
 			<div class="flex-grow border-t border-gray-500"></div>
 		</div>
-		<Form.Button variant="secondary" href="/register" class="w-full">Register</Form.Button>
+		<Form.Button variant="secondary" href="/register" class="w-full font-semibold"
+			>Register</Form.Button
+		>
 	</form>
 </div>
