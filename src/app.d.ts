@@ -12,6 +12,10 @@ declare global {
 			pb: PocketBase;
 			user: AuthModel | undefined;
 		}
+
+		interface MyEvent extends Event {
+			locals: Locals;
+		}
 	}
 }
 
