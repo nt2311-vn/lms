@@ -17,6 +17,7 @@ export const actions: Actions = {
 		const form = await superValidate(event, zod(loginSchema));
 
 		if (!form.valid) {
+			console.error('Form validate error', form.errors);
 			return fail(400, {
 				form
 			});
@@ -25,11 +26,15 @@ export const actions: Actions = {
 		try {
 			await pb.collection('users').authWithPassword(form.data.email, form.data.password);
 		} catch (err) {
-			const status = err as ClientResponseError;
-
-			return message(form, { status, message: `Error occured ${err}` });
+			const error = err as ClientResponseError;
+			return message(form, {
+				status: error.status,
+				message: `Error occured ${err}`
+			});
 		}
 
-		redirect(303, '/');
+		console.log('Redirecting to /');
+
+		throw redirect(303, '/');
 	}
 };
